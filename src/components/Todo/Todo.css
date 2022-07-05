@@ -1,5 +1,4 @@
 section.todo {
-    background: #444;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -9,7 +8,7 @@ section.todo {
 }
 
 section.todo button {
-    padding: 10px 40px;
+    padding: 10px 20px;
     font-size: 2rem;
     background: #FF0000;
     border-radius: 25px;

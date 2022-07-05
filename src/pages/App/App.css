@@ -2,6 +2,14 @@
     margin: 50px 300px;
 }
 
+.title {
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
 .addnew {
     background: #888;
     height: 100px;
@@ -43,4 +51,20 @@
     border-radius: 20px;
     cursor: pointer;
     border: none;
+}
+
+.error {
+    margin-top: 10px;
+}
+
+.giteRadio {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+}
+
+.giteRadio input[type='radio'] {
+    transform: scale(125%);
 }
