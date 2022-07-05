@@ -48,7 +48,7 @@ export default function App() {
     const [i, setI] = useState(0);
 
     const cliquedButton = () => {
-        SetReserved([...reserved, {name: name, date: date, secondeDate: date2,gite: gite ? "Gite 1" : gite2 && "Gite 2", index: i}]);
+        SetReserved([...reserved, {name: name, date: date, secondeDate: [date2], gite: gite ? "Gite 1" : gite2 && "Gite 2", index: i}]);
         setI(i + 1);
         console.log(i);
     }
@@ -70,7 +70,8 @@ export default function App() {
 
     const changeDate2 = name => {
         const test = new Date(name);
-        SetDate2(test.getDate().toString() + " " + convertNumberInMonths(test.getMonth() + 1) + " " + test.getFullYear().toString());
+        // SetDate2(test.getDate().toString() + " " + convertNumberInMonths(test.getMonth() + 1) + " " + test.getFullYear().toString());
+        SetDate2(test);
     }
 
     const changeDate = name => {
@@ -109,7 +110,7 @@ export default function App() {
                 <div className="calendar">
                     {
                         reserved.map(index => {
-                            return(<Todo key={index.index} delFun={() => delFunc(index.index)} name={index.name} time={index.date + " au " + index.secondeDate} gite={index.gite} />)
+                            return(<Todo key={index.index} delFun={() => delFunc(index.index)} name={index.name} time={index.secondeDate} gite={index.gite} />)
                         })
                     }
                 </div>
