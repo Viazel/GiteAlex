@@ -68,3 +68,39 @@
 .giteRadio input[type='radio'] {
     transform: scale(125%);
 }
+
+form {
+    height: 500px;
+    width: 500px;
+    background: #444;
+    border-radius: 10%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form input[type='password'] {
+    font-size: 1.5rem;
+    width: 350px;
+    height: 40px;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+form input[type='submit'] {
+    width: 300px;
+    height: 40px;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

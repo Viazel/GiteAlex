@@ -132,41 +132,70 @@ export default function App() {
         })
     }
 
+    const mainApp =
+            <section className="App">
+                <h1 className="title">Réservation gîtes Alexander</h1>
+                <div className="container">
+                    <div className="addnew">
+                        <input type="text" onChange={e => changeName(e.target.value)} placeholder="Entrez le nom de la personne"/>
+                        <div className="date-class">
+                            <input type="date" onChange={e => changeDate(e.target.value)}/> au <input type="date" onChange={e => changeDate2(e.target.value)}/>
+                        </div>
+                        <div className="giteRadio">
+                            <input type="radio" onClick={e => changeGite(e)} name="gite" id="gite1"/>
+                            <label htmlFor="gite1">Gîte 1</label>
+                        </div>
+                        <div className="giteRadio">
+                            <input type="radio" onClick={e => changeGite2(e)} name="gite" id="gite2"/>
+                            <label  htmlFor="gite2">Gîte 2</label>
+                        </div>
+                        <button onClick={cliquedButton}>Ajouter</button>
+                    </div>
+                    {error && <h1 className="error" style={{color: "red"}}>Erreur: Ce moment est déjà réservé</h1>}
+                    <input type="date" onChange={e => changeFilter(e.target.value)}/>
+                    <div className="calendar">
+                        {
+                            reserved.map(index => {
+                                return(
+                                    <Todo key={index.index} delFun={() => delFunc(index.index)} name={index.name} time={
+                                        index.date.getDate().toString() + " " + convertNumberInMonths(index.date.getMonth() + 1) + " " + index.date.getFullYear().toString()
+                                        + " au " +
+                                        index.secondeDate.getDate().toString() + " " + convertNumberInMonths(index.secondeDate.getMonth() + 1) + " " + index.secondeDate.getFullYear().toString()
+                                    } gite={index.gite} highlight={index.hight} />
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            </section>
+
+    const [canPass, SetCanpPass] = useState(false);
+
+    const [password, SetPassword] = useState(false);
+
+    const verifyPassword = e => {
+        e.preventDefault();
+        if(password === "Lunette"){
+            SetCanpPass(true);
+        }
+    }
+
+    const changePassword = e => {
+        SetPassword(e);
+    }
+
     return (
-        <section className="App">
-            <h1 className="title">Réservation gîtes Alexander</h1>
-            <div className="container">
-                <div className="addnew">
-                    <input type="text" onChange={e => changeName(e.target.value)} placeholder="Entrez le nom de la personne"/>
-                    <div className="date-class">
-                        <input type="date" onChange={e => changeDate(e.target.value)}/> au <input type="date" onChange={e => changeDate2(e.target.value)}/>
-                    </div>
-                    <div className="giteRadio">
-                        <input type="radio" onClick={e => changeGite(e)} name="gite" id="gite1"/>
-                        <label htmlFor="gite1">Gîte 1</label>
-                    </div>
-                    <div className="giteRadio">
-                        <input type="radio" onClick={e => changeGite2(e)} name="gite" id="gite2"/>
-                        <label  htmlFor="gite2">Gîte 2</label>
-                    </div>
-                    <button onClick={cliquedButton}>Ajouter</button>
+
+        <div>
+            {canPass ? mainApp :
+                <div>
+                    <form action="" onSubmit={e => verifyPassword(e)}>
+                        <input type="password" placeholder="Entrez votre mot de passe" autoComplete="on" onChange={e => changePassword(e.target.value)}/>
+                        <input type="submit"/>
+                    </form>
                 </div>
-                {error && <h1 className="error" style={{color: "red"}}>Erreur: Ce moment est déjà réservé</h1>}
-                <input type="date" onChange={e => changeFilter(e.target.value)}/>
-                <div className="calendar">
-                    {
-                        reserved.map(index => {
-                            return(
-                                <Todo key={index.index} delFun={() => delFunc(index.index)} name={index.name} time={
-                                    index.date.getDate().toString() + " " + convertNumberInMonths(index.date.getMonth() + 1) + " " + index.date.getFullYear().toString()
-                                + " au " +
-                                    index.secondeDate.getDate().toString() + " " + convertNumberInMonths(index.secondeDate.getMonth() + 1) + " " + index.secondeDate.getFullYear().toString()
-                                } gite={index.gite} highlight={index.hight} />
-                            )
-                        })
-                    }
-                </div>
-            </div>
-        </section>
+            }
+        </div>
     )
+
 }
