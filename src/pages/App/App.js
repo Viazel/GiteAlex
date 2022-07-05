@@ -48,9 +48,11 @@ export default function App() {
     const [i, setI] = useState(0);
 
     const cliquedButton = () => {
-        SetReserved([...reserved, {name: name, date: date, secondeDate: [date2], gite: gite ? "Gite 1" : gite2 && "Gite 2", index: i}]);
+        SetReserved([...reserved, {name: name, date: date, secondeDate: date2, gite: gite ? "Gite 1" : gite2 && "Gite 2", index: i}]);
+        reserved.map(index => {
+            console.log(index.date.getUTCDate().toString());
+        })
         setI(i + 1);
-        console.log(i);
     }
 
     const delFunc = e => {
@@ -69,14 +71,13 @@ export default function App() {
     }
 
     const changeDate2 = name => {
-        const test = new Date(name);
         // SetDate2(test.getDate().toString() + " " + convertNumberInMonths(test.getMonth() + 1) + " " + test.getFullYear().toString());
-        SetDate2(test);
+        SetDate2(new Date(name));
     }
 
     const changeDate = name => {
-        const test = new Date(name);
-        SetDate(test.getDate().toString() + " " + convertNumberInMonths(test.getMonth() + 1) + " " + test.getFullYear().toString());
+        // SetDate(test.getDate().toString() + " " + convertNumberInMonths(test.getMonth() + 1) + " " + test.getFullYear().toString());
+        SetDate(new Date(name));
     }
 
     const changeGite = e => {
@@ -110,7 +111,13 @@ export default function App() {
                 <div className="calendar">
                     {
                         reserved.map(index => {
-                            return(<Todo key={index.index} delFun={() => delFunc(index.index)} name={index.name} time={index.secondeDate} gite={index.gite} />)
+                            return(
+                                <Todo key={index.index} delFun={() => delFunc(index.index)} name={index.name} time={
+                                    index.date.getDate().toString() + " " + convertNumberInMonths(index.date.getMonth() + 1) + " " + index.date.getFullYear().toString()
+                                + " au " +
+                                    index.secondeDate.getDate().toString() + " " + convertNumberInMonths(index.secondeDate.getMonth() + 1) + " " + index.secondeDate.getFullYear().toString()
+                                } gite={index.gite} />
+                            )
                         })
                     }
                 </div>
