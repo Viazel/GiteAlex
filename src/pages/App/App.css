@@ -1,0 +1,46 @@
+.container {
+    margin: 50px 300px;
+}
+
+.addnew {
+    background: #888;
+    height: 100px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.addnew input[type='text'] {
+    height: 30px;
+    width: 300px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    text-indent: 10px;
+}
+
+.addnew input[type='date'] {
+    outline: none;
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    border: none;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.date-class {
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.addnew button {
+    padding: 8px 20px;
+    font-size: 2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+}
