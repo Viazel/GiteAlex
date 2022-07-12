@@ -134,7 +134,7 @@ export default function App() {
 
     const mainApp =
             <section className="App">
-                <h1 className="title">Réservation gîtes JEAN</h1>
+                <h1 className="title">Réservation gîtes Alexeandre</h1>
                 <div className="container">
                     <div className="addnew">
                         <input type="text" onChange={e => changeName(e.target.value)} placeholder="Entrez le nom de la personne"/>
